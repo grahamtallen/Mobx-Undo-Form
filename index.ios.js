@@ -5,6 +5,6 @@ import {
     Text,
     View
 } from 'react-native';
-import App from './js/App'
+import {App} from './js/App'
 
 AppRegistry.registerComponent('StoreCompiler', () => App);

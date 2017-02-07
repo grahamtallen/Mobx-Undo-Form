@@ -51,6 +51,7 @@ class GlobalStore {
         let {UndoStore, UiStore, ColorStore} = this.substores;
         let lastSnapshot = UndoStore.snapshots.length > 1 && UndoStore.snapshots[1];
         if (lastSnapshot) {
+
             UiStore.autoSaveDrafts = false;
 
             // here is where the entire application state is reset based on the last snapshot, see Snapshot.js

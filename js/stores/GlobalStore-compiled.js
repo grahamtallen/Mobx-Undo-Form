@@ -101,4 +101,4 @@ UiStore.loggedIn=true;case 5:case 'end':return _context2.stop();}}},null,_this3)
 
 new GlobalStore();
 
-//# sourceMappingURL=StoreCombiner-compiled.js.map
+//# sourceMappingURL=GlobalStore-compiled.js.map

@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 import Main from './components/containers/Main'
 import {Provider, observer} from 'mobx-react/native'
-import GlobalStore from './stores/StoreCombiner'
+import GlobalStore from './stores/GlobalStore.js'
 
 @observer
 export class App extends Component {

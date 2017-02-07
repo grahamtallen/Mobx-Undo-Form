@@ -1,59 +1,29 @@
-# React native IO utils for Android
+# React-Native + Mobx Undo-able Form 
 
-Network file upload and file download. As well as file/image/video picking utilities for android.
-
+A form with undo-able actions. By unifying the entire application's observable state in a Global Store, you can revert the entire application's state using methods on the Global Store
 ###Examples
 ---
 
 ```javascript
+    // in GlobalStore.js
+    
+        resetState() {
+            let {UndoStore, UiStore, ColorStore} = this.substores;
+            let lastSnapshot = UndoStore.snapshots.length > 1 && UndoStore.snapshots[1];
+            if (lastSnapshot) {
+                
+                UiStore.autoSaveDrafts = false;
+    
+                // here is where the entire application state is reset based on the last snapshot, see Snapshot.js
+                this.substores = resetSnapshot(lastSnapshot, this.substores);
+    
+                UndoStore.popSnapshot();
+                UiStore.autoSaveDrafts = true;
+            }
+        }
+
   
 ```
 
-#Installation
----
 
-Install the npm package [`react-native-io-utils`](https://www.npmjs.com/package/react-native-io-utils). Inside your React Native project, run ([example](https://github.com/Anthonyzou/react-native-io-utils/tree/master/example)):
 
-```bash
-npm install --save react-native-io-utils
-```
-
-In `android/settings.gradle` add the following lines
-
-```
-include :react-native-io-utils'
-project(':react-native-io-utils').projectDir = file('../node_modules/react-native-io-utils/android')
-```
-
----
-
-In `android/app/build.gradle`, add a dependency to `':react-native-io-utils'`
-
-```
-dependencies {
-    compile project(':react-native-io-utils')
-}
-```
-
-Next, you need to change the `MainActivity` of your app to register `IOUtilsModule` :
-```java
-import com.rn.io.utils.IOUtilsModule; // add this import
-
-public class MainActivity extends ReactActivity {
-    //...
-
-    @Override
-    protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-          new IOUtilsModule() // add this manager
-      );
-    }
-```
-
----
-
-TeamLockr io utils
-Team Lockr io utils for react native
-
-These are functions created by the TeamLockr Team created for the TeamLockr platform.
