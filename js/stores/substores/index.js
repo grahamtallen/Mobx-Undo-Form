@@ -9,6 +9,7 @@ class UiStore {
     @observable loggedIn = false;
     @observable searchText = "";
     @observable displayUndo = false;
+    @observable autoSaveDrafts = true;
 }
 
 class ColorStore {
@@ -38,17 +39,18 @@ class NumberStore {
     }
 }
 
-class WordStore {
-    @observable currentWord = "Hi";
+class FormStore {
+    @observable header = "";
+    @observable description = "";
 }
 
 class UserStore {
-    @observable currentUsers = {};
+    @observable currentUser = {};
     @observable users = [];
 
     @action
-    getUserss = async () => {
-        this.users = await Api.getUserss();
+    getUsers = async () => {
+        this.users = await Api.getUsers();
     };
 
     @action
@@ -58,8 +60,8 @@ class UserStore {
 
     @computed
     get username() {
-        if (this.currentUsers.name.length > 0) {
-            return this.currentUsers.name
+        if (this.currentUser.name) {
+            return this.currentUser.name
         } else {
             return null;
         }
@@ -72,20 +74,28 @@ class UndoStore {
 
     @action
     pushSnapshot(snap) {
-        this.snapshots.push(snap);
+        if (snap) {
+            this.snapshots.unshift(snap);
+            console.log(this.snapshots[0].currentColor, 'the previous Color is stored here')
+        }
+        else console.log('undefined snap')
     }
 
     @action
     popSnapshot() {
-        this.snapshots.pop();
+        this.snapshots.shift();
+        console.log(this.snapshots[0].currentColor, 'after resetting the state, the previous snap, before the one that was just reset, is stored here')
+
+
     }
 }
+
 
 export const subStores = [
     new UiStore(),
     new ColorStore(),
     new UserStore(),
-    new WordStore(),
+    new FormStore(),
     new UndoStore(),
     new NumberStore()
 ];

@@ -16,34 +16,64 @@ color:'white'}};var
 
 
 
+
 Main=(_dec=(0,_native.inject)("stores","globals"),_dec(_class=(0,_native.observer)(_class=(function(_Component){_inherits(Main,_Component);function Main(){_classCallCheck(this,Main);return _possibleConstructorReturn(this,(Main.__proto__||Object.getPrototypeOf(Main)).apply(this,arguments))}_createClass(Main,[{key:'componentDidMount',value:function componentDidMount()
 
 {
-//this.props.globals.login();
-}},{key:'render',value:function render()
+this.props.globals.login()}},{key:'render',value:function render()
+
 
 {var _props$stores=
 this.props.stores,UiStore=_props$stores.UiStore,NumberStore=_props$stores.NumberStore,ColorStore=_props$stores.ColorStore;
 var globals=this.props.globals;
-var loggedIn=UiStore.loggedIn;
+
+var viewStyle={width:50,height:50,backgroundColor:ColorStore.currentColor};
+
 return (
-_react2.default.createElement(_reactNative.View,{style:{flex:1,flexDirection:'column',alignItems:'center',justifyContent:'flex-start'},__source:{fileName:_jsxFileName,lineNumber:30}},
-_react2.default.createElement(_reactNative.View,{style:{flex:1,flexDirection:'row'},__source:{fileName:_jsxFileName,lineNumber:31}},
-_react2.default.createElement(_reactNative.View,{style:{width:50,height:50,backgroundColor:ColorStore.currentColor},__source:{fileName:_jsxFileName,lineNumber:32}},
-_react2.default.createElement(_reactNative.Text,{style:styles.textStyles,__source:{fileName:_jsxFileName,lineNumber:33}},NumberStore.currentNumberStore)),
-
-_react2.default.createElement(_reactNative.View,{style:{width:50,height:50,backgroundColor:ColorStore.currentColor},__source:{fileName:_jsxFileName,lineNumber:35}},
-_react2.default.createElement(_reactNative.Text,{style:styles.textStyles,__source:{fileName:_jsxFileName,lineNumber:36}},loggedIn?"Logged In":"Login")),
-
-_react2.default.createElement(_reactNative.View,{style:{width:50,height:50,backgroundColor:ColorStore.currentColor},__source:{fileName:_jsxFileName,lineNumber:38}},
-_react2.default.createElement(_reactNative.Text,{style:styles.textStyles,__source:{fileName:_jsxFileName,lineNumber:39}},NumberStore.currentNumberStore))),
+_react2.default.createElement(_nativeBase.Container,{__source:{fileName:_jsxFileName,lineNumber:33}},
+_react2.default.createElement(_nativeBase.Content,{__source:{fileName:_jsxFileName,lineNumber:34}},
+_react2.default.createElement(_nativeBase.Header,{style:{flex:1,flexDirection:'row'},__source:{fileName:_jsxFileName,lineNumber:35}},
+_react2.default.createElement(_nativeBase.Left,{__source:{fileName:_jsxFileName,lineNumber:36}},
+_react2.default.createElement(_nativeBase.Button,{transparent:true,__source:{fileName:_jsxFileName,lineNumber:37}},
+NumberStore.currentNumber)),
 
 
-_react2.default.createElement(_reactNative.View,{style:{flex:1,flexDirection:'row'},__source:{fileName:_jsxFileName,lineNumber:42}},
-_react2.default.createElement(_nativeBase.Button,{onPress:function onPress(){return ColorStore.setColor(0)},__source:{fileName:_jsxFileName,lineNumber:43}},'Red'),
-_react2.default.createElement(_nativeBase.Button,{onPress:function onPress(){return ColorStore.setColor(1)},__source:{fileName:_jsxFileName,lineNumber:44}},'Blue'),
-_react2.default.createElement(_nativeBase.Button,{onPress:function onPress(){return NumberStore.add()},__source:{fileName:_jsxFileName,lineNumber:45}},'Add'),
-UiStore.displayUndo&&_react2.default.createElement(_nativeBase.Button,{onPress:function onPress(){return globals.resetState()},__source:{fileName:_jsxFileName,lineNumber:46}},'Undo'))))}}]);return Main})(_react.Component))||_class)||_class);
+_react2.default.createElement(_nativeBase.Body,{__source:{fileName:_jsxFileName,lineNumber:41}},
+_react2.default.createElement(Title,{__source:{fileName:_jsxFileName,lineNumber:42}},UiStore.loggedIn?"Logged In":"Login")),
+
+_react2.default.createElement(_nativeBase.Right,{__source:{fileName:_jsxFileName,lineNumber:44}},
+_react2.default.createElement(_nativeBase.Button,{transparent:true,__source:{fileName:_jsxFileName,lineNumber:45}},
+NumberStore.currentNumber))),
+
+
+
+_react2.default.createElement(_reactNative.View,{style:{flex:1,flexDirection:'row'},__source:{fileName:_jsxFileName,lineNumber:50}},
+_react2.default.createElement(_nativeBase.Button,{danger:true,onPress:function onPress(){return ColorStore.setColor(1)},__source:{fileName:_jsxFileName,lineNumber:51}},'Red'),
+_react2.default.createElement(_nativeBase.Button,{onPress:function onPress(){return ColorStore.setColor(0)},__source:{fileName:_jsxFileName,lineNumber:52}},'Blue'),
+_react2.default.createElement(_nativeBase.Button,{success:true,onPress:function onPress(){return ColorStore.setColor(2)},__source:{fileName:_jsxFileName,lineNumber:53}},'Green'),
+_react2.default.createElement(_nativeBase.Button,{onPress:function onPress(){return NumberStore.add()},__source:{fileName:_jsxFileName,lineNumber:54}},'Add'),
+UiStore.displayUndo&&_react2.default.createElement(_nativeBase.Button,{onPress:function onPress(){return globals.resetState()},__source:{fileName:_jsxFileName,lineNumber:55}},'Undo')),
+
+_react2.default.createElement(_reactNative.View,{style:{flex:1,flexDirection:'row',backgroundColor:'blue'},__source:{fileName:_jsxFileName,lineNumber:57}},
+_react2.default.createElement(_nativeBase.List,{__source:{fileName:_jsxFileName,lineNumber:58}},
+_react2.default.createElement(_nativeBase.ListItem,{style:{backgroundColor:'blue',width:80},__source:{fileName:_jsxFileName,lineNumber:59}},
+_react2.default.createElement(_nativeBase.Icon,{active:true,name:'home',__source:{fileName:_jsxFileName,lineNumber:60}}),
+_react2.default.createElement(_nativeBase.Input,{placeholder:'Icon Textbox',__source:{fileName:_jsxFileName,lineNumber:61}})),
+
+
+_react2.default.createElement(_nativeBase.ListItem,{__source:{fileName:_jsxFileName,lineNumber:64}},
+_react2.default.createElement(_nativeBase.Input,{placeholder:'Alignment in Textbox',__source:{fileName:_jsxFileName,lineNumber:65}})),
+
+_react2.default.createElement(_nativeBase.ListItem,{__source:{fileName:_jsxFileName,lineNumber:67}},
+_react2.default.createElement(_reactNative.Text,{__source:{fileName:_jsxFileName,lineNumber:68}},'Simon Mignolet')),
+
+_react2.default.createElement(_nativeBase.ListItem,{__source:{fileName:_jsxFileName,lineNumber:70}},
+_react2.default.createElement(_reactNative.Text,{__source:{fileName:_jsxFileName,lineNumber:71}},'Nathaniel Clyne')),
+
+_react2.default.createElement(_nativeBase.ListItem,{__source:{fileName:_jsxFileName,lineNumber:73}},
+_react2.default.createElement(_reactNative.Text,{__source:{fileName:_jsxFileName,lineNumber:74}},'Dejan Lovren')))))))}}]);return Main})(_react.Component))||_class)||_class);
+
+
 
 
 

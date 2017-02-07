@@ -1,19 +1,22 @@
 
-export function snapshot(substores) {
-        var {Users, Colors, Number} = substores;
+export function snapshotModel(state) {
+        let {UserStore, ColorStore, NumberStore, UiStore, FormStore} = state;
         return {
-            currentColor: Colors.currentColor,
-            currentUser: Users.currentUser,
-            phrase: substores.phrase,
-            number: Number.currentNumber
+            currentColor: ColorStore.currentColor,
+            currentUser: UserStore.currentUser,
+            phrase: state.phrase,
+            number: NumberStore.currentNumber,
+            header: FormStore.header,
+            description: FormStore.description
         }
 }
 
 export function resetSnapshot(snapshot, state) {
-    var {Users, Colors, Number} = state;
-    var index = Colors.colors.indexOf(snapshot.currentColor);
-    Colors.colorIndex = index;
-    console.log('colors', index);
-    Number.currentNumber = snapshot.number;
+    let index = state.ColorStore.colors.indexOf(snapshot.currentColor);
+    state.ColorStore.colorIndex = index;
+    state.NumberStore.currentNumber = snapshot.number;
+    state.FormStore.header = snapshot.header
+    state.FormStore.description = snapshot.description
+    return state
 
 }

@@ -4,87 +4,99 @@
 import {observable, computed, action, reaction, when } from 'mobx'
 import Api from '../api/index'
 import _ from 'lodash';
-//import {UiStore, ColorStore, UserStore, WordStore, UndoStore, NumberStore} from './substores/'
-import {snapshot, resetSnapshot} from './models/Snapshot'
+import {snapshotModel, resetSnapshot} from './models/Snapshot'
 import {subStores} from './substores/'
+import {mapStores} from './MobxUtils'
 
 class GlobalStore {
 
     @observable stores = {};
 
     constructor() {
-        _.forEach(subStores, (store, key) => {
-            this.stores[store.constructor.name] = store
-        });
-        var {UndoStore, UiStore} = this.stores;
-        reaction(
-            () => this.snapshot,
-            async (snapshot) => {
-                UndoStore.pushSnapshot(snapshot);
-                //await this.saveDraft(snapshot);
-                console.log(UndoStore.snapshots.length);
-            }
-        );
+        //alert(typeof subStores.ColorStore);
+        this.stores = mapStores(subStores);
+
+        var {UiStore, UndoStore} = this.stores;
+
+        reaction(() => this.snapshot, this.pushSnapshotAndSave);
+
         //when(() => UiStore.loggedIn, this.displayUser);
 
-        //reaction(() => UndoStore.snapshot, () => UiStore.displayUndo = true)
-        reaction(() => this.snapshot, () => this.calculateUndo());
+        reaction(() => UndoStore.snapshots.length > 1, (bool) => UiStore.displayUndo = bool);
     }
 
-    @action
-    resetState() {
+
+    pushSnapshotAndSave = async (snapshot) => {
         let {UndoStore, UiStore} = this.stores;
-        resetSnapshot(UndoStore.snapshots[0], this.stores);
-        UndoStore.popSnapshot();
+        if (snapshot && UiStore.autoSaveDrafts) {
+            UndoStore.pushSnapshot(snapshot);
+            UiStore.displayUndo = true;
+            setTimeout(() => {
+                //Api.saveDraft(snapshot);
+            }, 12000)
+        } else {
+            console.log('no snapshot saved!')
+        }
+
+    }
+
+    resetState() {
+        let {UndoStore, UiStore, ColorStore} = this.stores;
+        let lastSnapshot = UndoStore.snapshots.length > 1 && UndoStore.snapshots[1];
+        if (lastSnapshot) {
+            console.log('resetState', lastSnapshot);
+            UiStore.autoSaveDrafts = false;
+            console.log(lastSnapshot.currentColor);
+            this.stores = resetSnapshot(lastSnapshot, this.stores);
+            console.log(ColorStore.currentColor, 'old Color');
+            UndoStore.popSnapshot();
+            UiStore.autoSaveDrafts = true;
+        }
+        else console.log('undefined lastSnap')
+
     }
 
     @action
     login() {
-        var {UserStore, UiStore} = this.stores;
+        let {UserStore, UiStore} = this.stores;
         UserStore.currentUser = Api.getCurrentUser();// await
         UiStore.loggedIn = true;
     }
 
     @action
     logout() {
-        var {UserStore, UiStore, ColorStore} = this.stores;
+        let {UserStore, UiStore, ColorStore, WordStore} = this.stores;
         UserStore.currentUser = {};// async
         UiStore.loggedIn = false;
-        ColorStore.setColor(0);
     }
 
     @action
     displayUser() {
-        var {ColorStore} = this.stores;
-        ColorStore.setColor(2);
+        let {ColorStore} = this.stores;
+        //ColorStore.setColor(2);
 
     }
 
     @computed
     get phrase() {
-        var {UserStore, WordStore} = this.stores;
-        return WordStore.currentWord + ", " + UserStore.currentUserStore.name;
-    }
-
-    @action
-    calculateUndo() {
-        var {UndoStore, UiStore} = this.stores;
-        if (UndoStore.snapshots.length === 0) {
-            UiStore.displayUndo = false;
+        let {UserStore, FormStore} = this.stores;
+        if (UserStore.currentUser.name) {
+            return FormStore.header + ", " + UserStore.currentUser.name;
         } else {
-            UiStore.displayUndo = true;
+            return null
         }
     }
 
+
     @computed
-    get searchedUserStore() {
+    get searchedUsers() {
         var {UiStore, UserStore} = this.stores;
         return UserStore.users.filter(user => user.name.includes(UiStore.searchText))
     }
 
     @computed
     get snapshot() {
-        return snapshot(this.stores)
+        return snapshotModel(this.stores)
     }
 }
 
