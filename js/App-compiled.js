@@ -22,7 +22,7 @@ var _StoreCombiner=require('./stores/StoreCombiner');var _StoreCombiner2=_intero
 App=exports.App=(0,_native.observer)(_class=(function(_Component){_inherits(App,_Component);function App(){_classCallCheck(this,App);return _possibleConstructorReturn(this,(App.__proto__||Object.getPrototypeOf(App)).apply(this,arguments))}_createClass(App,[{key:'render',value:function render()
 {
 return (
-_react2.default.createElement(_native.Provider,{globals:_StoreCombiner2.default,stores:_StoreCombiner2.default.stores,__source:{fileName:_jsxFileName,lineNumber:25}},
+_react2.default.createElement(_native.Provider,{globals:_StoreCombiner2.default,stores:_StoreCombiner2.default.substores,__source:{fileName:_jsxFileName,lineNumber:25}},
 _react2.default.createElement(_Main2.default,{__source:{fileName:_jsxFileName,lineNumber:26}})))}}]);return App})(_react.Component))||_class;
 
 

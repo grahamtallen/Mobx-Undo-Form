@@ -22,7 +22,7 @@ import GlobalStore from './stores/StoreCombiner'
 export class App extends Component {
     render() {
         return (
-            <Provider globals={GlobalStore} stores={GlobalStore.stores}>
+            <Provider globals={GlobalStore} stores={GlobalStore.substores}>
                 <Main />
             </Provider>
         )
