@@ -12,9 +12,8 @@ class GlobalStore {
     @observable substores = {};
 
     constructor() {
-        this.substores = mapStores(subStores); // After this global store class is instatiated via the constructor function,
-                                                // map the substores to this object
-
+        // After this global store class is instatiated via the constructor function,  map the substores to this object
+        this.substores = mapStores(subStores); 
 
         var {UiStore, UndoStore} = this.substores; // you can even deconstruct the state immidiately after instantiation,
 
@@ -23,7 +22,7 @@ class GlobalStore {
 
         reaction(() => UndoStore.snapshots.length > 1, (bool) => UiStore.displayUndo = bool); // or bind reactions to and from the substores
 
-        //when(() => UiStore.loggedIn, this.displayUser);
+        when(() => UiStore.loggedIn, this.displayUser); // this, referring to the GlobalStore and the methods bound to it
 
     }
     
