@@ -13,9 +13,7 @@ class GlobalStore {
     @observable stores = {};
 
     constructor() {
-        //alert(typeof subStores.ColorStore);
         this.stores = mapStores(subStores);
-
         var {UiStore, UndoStore} = this.stores;
 
         reaction(() => this.snapshot, this.pushSnapshotAndSave);

@@ -4,7 +4,7 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
 import {observer, Provider, inject} from 'mobx-react/native'
-import {Button, ListItem, Icon, Input, Container, Content, Header, List, Left, Right, Body, Title} from 'native-base';
+import {Button, ListItem, Icon, Input, Container, Content, Header, List, Left, Right, Body, Title, Footer, FooterTab} from 'native-base';
 
 const styles = {
     textStyles: {
@@ -30,20 +30,19 @@ class Main extends Component {
         const viewStyle = {width: 50, height: 50, backgroundColor: ColorStore.currentColor};
 
         const undoButton = (
-            <Button bordered danger onPress={() => globals.resetState()}>
-                <Text>{'Undo'}</Text>
-            </Button>
+            <Footer style={{backgroundColor: ColorStore.currentColor}}>
+                <FooterTab>
+                    <Button onPress={() => globals.resetState()}>
+                        <Text style={styles.textStyles}>{'Undo'}</Text>
+                    </Button>
+                </FooterTab>
+            </Footer>
         )
 
         return (
             <Container>
             <Content>
                 <Header  style={{flex: 1, flexDirection: 'row', backgroundColor: ColorStore.currentColor}}>
-                    <Left>
-                        <Button transparent>
-                            <Text style={{color: 'white'}}>{NumberStore.currentNumber}</Text>
-                        </Button>
-                    </Left>
                     <Body>
                         <Title>{FormStore.header ? FormStore.header : "Create Form"}</Title>
                     </Body>
@@ -53,12 +52,13 @@ class Main extends Component {
                         </Button>
                     </Right>
                 </Header>
-                <View style={{flex: 1, width: null, height: null}} >
+                <View  >
                         <ListItem style={{width: 300}}>
                             <Input
                                 style={{width: 300}} placeholder='Title'
                                 value={FormStore.header}
                                 onChangeText={(text) => FormStore.header = text}
+                                autoCapitalize="sentences"
                             />
                         </ListItem>
 
@@ -70,13 +70,13 @@ class Main extends Component {
                             />
                         </ListItem>
                         <ListItem>
-                            <Text>Simon Mignolet</Text>
-                        </ListItem>
-                        <ListItem>
-                            <Text>Nathaniel Clyne</Text>
-                        </ListItem>
-                        <ListItem>
-                            <Text>Dejan Lovren</Text>
+                            <Text>{'Shared Users: ' + NumberStore.currentNumber}</Text>
+                            <Right>
+                                <Button bordered onPress={() => NumberStore.add()}>
+                                    <Text >{'Add'}</Text>
+                                </Button>
+                            </Right>
+
                         </ListItem>
                 </View>
                 <View style={{flex: 1, flexDirection: 'row'}}>
@@ -89,12 +89,11 @@ class Main extends Component {
                     <Button style={{backgroundColor: 'green'}} onPress={() => ColorStore.setColor(2)}>
                         <Text style={styles.textStyles}>{'Green'}</Text>
                     </Button>
-                    <Button bordered onPress={() => NumberStore.add()}>
-                        <Text >{'Add'}</Text>
-                    </Button>
-                    {UiStore.displayUndo && undoButton}
+
                 </View>
+
             </Content>
+                        {UiStore.displayUndo && undoButton}
             </Container>
         );
     }

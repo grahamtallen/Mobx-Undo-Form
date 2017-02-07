@@ -76,7 +76,7 @@ class UndoStore {
     pushSnapshot(snap) {
         if (snap) {
             this.snapshots.unshift(snap);
-            console.log(this.snapshots[0].currentColor, 'the previous Color is stored here')
+            console.log(this.snapshots[0].header, 'the previous Color is stored here')
         }
         else console.log('undefined snap')
     }
@@ -84,7 +84,7 @@ class UndoStore {
     @action
     popSnapshot() {
         this.snapshots.shift();
-        console.log(this.snapshots[0].currentColor, 'after resetting the state, the previous snap, before the one that was just reset, is stored here')
+        console.log(this.snapshots[0].header, 'after resetting the state, the previous snap, before the one that was just reset, is stored here')
 
 
     }
