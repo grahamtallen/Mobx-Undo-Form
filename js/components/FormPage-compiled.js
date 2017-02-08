@@ -15,26 +15,6 @@ this.props.stores,NumberStore=_props$stores.NumberStore,FormStore=_props$stores.
 
 return (
 _react2.default.createElement(_reactNative.View,{__source:{fileName:_jsxFileName,lineNumber:17}},
-_react2.default.createElement(_nativeBase.ListItem,{style:{width:300},__source:{fileName:_jsxFileName,lineNumber:18}},
-_react2.default.createElement(_nativeBase.Input,{
-style:{width:300},placeholder:'Title',
-value:FormStore.header,
-onChangeText:function onChangeText(text){return FormStore.header=text},
-autoCapitalize:'sentences',__source:{fileName:_jsxFileName,lineNumber:19}})),
-
-
-_react2.default.createElement(_nativeBase.ListItem,{style:{width:300},__source:{fileName:_jsxFileName,lineNumber:26}},
-_react2.default.createElement(_nativeBase.Input,{
-style:{width:300},
-placeholder:'Description',
-value:FormStore.description,
-onChangeText:function onChangeText(text){return FormStore.description=text},__source:{fileName:_jsxFileName,lineNumber:27}})),
-
-
-_react2.default.createElement(_nativeBase.ListItem,{__source:{fileName:_jsxFileName,lineNumber:34}},
-_react2.default.createElement(_reactNative.Text,{__source:{fileName:_jsxFileName,lineNumber:35}},'Shared Users: '+NumberStore.currentNumber),
-_react2.default.createElement(_nativeBase.Right,{__source:{fileName:_jsxFileName,lineNumber:36}},
-_react2.default.createElement(_nativeBase.Button,{bordered:true,onPress:function onPress(){return NumberStore.add()},__source:{fileName:_jsxFileName,lineNumber:37}},
-_react2.default.createElement(_reactNative.Text,{__source:{fileName:_jsxFileName,lineNumber:38}},'Add'))))))}}]);return FormPage})(_react.Component))||_class)||_class);exports.default=FormPage;
+_react2.default.createElement(_reactNative.Text,{__source:{fileName:_jsxFileName,lineNumber:18}},'text')))}}]);return FormPage})(_react.Component))||_class)||_class);exports.default=FormPage;
 
 //# sourceMappingURL=FormPage-compiled.js.map

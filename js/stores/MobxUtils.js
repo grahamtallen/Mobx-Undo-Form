@@ -8,6 +8,5 @@ export const mapStores = (subStores) => {
     _.forEach(subStores, (store, key) => {
         mappedStores[store.constructor.name] = store;
     });
-
     return mappedStores;
-}
+};

@@ -26,31 +26,27 @@ class Main extends Component {
     }
 
     render() {
+
         let {UiStore, NumberStore, ColorStore, FormStore} = this.props.stores;
         let globals = this.props.globals;
-
-        const viewStyle = {width: 50, height: 50, backgroundColor: ColorStore.currentColor};
-
-
+        const headerStyle = {flex: 1, flexDirection: 'row', backgroundColor: ColorStore.currentColor};
+        let headerText = FormStore.header ? FormStore.header : "Create Form";
 
         return (
             <Container>
                 <Content>
-                    <Header  style={{flex: 1, flexDirection: 'row', backgroundColor: ColorStore.currentColor}}>
+                    <Header  style={headerStyle}>
                         <Body>
-                            <Title>{FormStore.header ? FormStore.header : "Create Form"}</Title>
+                            <Title>{headerText}</Title>
                         </Body>
-                        <Right >
+                        <Right>
                             <Button transparent>
-                                <Text style={{color: 'white'}}>{NumberStore.currentNumber}</Text>
+                                <Text style={styles.textStyles}>{NumberStore.currentNumber}</Text>
                             </Button>
                         </Right>
                     </Header>
-
                     <FormPage />
-
                     <Controls />
-
                 </Content>
               {UiStore.displayUndo && <UndoButton />}
             </Container>

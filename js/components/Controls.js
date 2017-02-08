@@ -30,4 +30,4 @@ const Controls = ({stores}) => {
         )
 }
 
-export default inject('stores')(observer(Controls))
+export default inject('stores')(Controls)

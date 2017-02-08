@@ -26,33 +26,29 @@ this.props.globals.login()}},{key:'render',value:function render()
 
 
 {var _props$stores=
+
 this.props.stores,UiStore=_props$stores.UiStore,NumberStore=_props$stores.NumberStore,ColorStore=_props$stores.ColorStore,FormStore=_props$stores.FormStore;
 var globals=this.props.globals;
-
-var viewStyle={width:50,height:50,backgroundColor:ColorStore.currentColor};
-
-
+var headerStyle={flex:1,flexDirection:'row',backgroundColor:ColorStore.currentColor};
+var headerText=FormStore.header?FormStore.header:"Create Form";
 
 return (
-_react2.default.createElement(_nativeBase.Container,{__source:{fileName:_jsxFileName,lineNumber:37}},
-_react2.default.createElement(_nativeBase.Content,{__source:{fileName:_jsxFileName,lineNumber:38}},
-_react2.default.createElement(_nativeBase.Header,{style:{flex:1,flexDirection:'row',backgroundColor:ColorStore.currentColor},__source:{fileName:_jsxFileName,lineNumber:39}},
-_react2.default.createElement(_nativeBase.Body,{__source:{fileName:_jsxFileName,lineNumber:40}},
-_react2.default.createElement(_nativeBase.Title,{__source:{fileName:_jsxFileName,lineNumber:41}},FormStore.header?FormStore.header:"Create Form")),
+_react2.default.createElement(_nativeBase.Container,{__source:{fileName:_jsxFileName,lineNumber:36}},
+_react2.default.createElement(_nativeBase.Content,{__source:{fileName:_jsxFileName,lineNumber:37}},
+_react2.default.createElement(_nativeBase.Header,{style:headerStyle,__source:{fileName:_jsxFileName,lineNumber:38}},
+_react2.default.createElement(_nativeBase.Body,{__source:{fileName:_jsxFileName,lineNumber:39}},
+_react2.default.createElement(_nativeBase.Title,{__source:{fileName:_jsxFileName,lineNumber:40}},headerText)),
 
-_react2.default.createElement(_nativeBase.Right,{__source:{fileName:_jsxFileName,lineNumber:43}},
-_react2.default.createElement(_nativeBase.Button,{transparent:true,__source:{fileName:_jsxFileName,lineNumber:44}},
-_react2.default.createElement(_reactNative.Text,{style:{color:'white'},__source:{fileName:_jsxFileName,lineNumber:45}},NumberStore.currentNumber)))),
-
-
+_react2.default.createElement(_nativeBase.Right,{__source:{fileName:_jsxFileName,lineNumber:42}},
+_react2.default.createElement(_nativeBase.Button,{transparent:true,__source:{fileName:_jsxFileName,lineNumber:43}},
+_react2.default.createElement(_reactNative.Text,{style:styles.textStyles,__source:{fileName:_jsxFileName,lineNumber:44}},NumberStore.currentNumber)))),
 
 
-_react2.default.createElement(_FormPage2.default,{__source:{fileName:_jsxFileName,lineNumber:50}}),
 
-_react2.default.createElement(_Controls2.default,{__source:{fileName:_jsxFileName,lineNumber:52}})),
+_react2.default.createElement(_FormPage2.default,{__source:{fileName:_jsxFileName,lineNumber:48}}),
+_react2.default.createElement(_Controls2.default,{__source:{fileName:_jsxFileName,lineNumber:49}})),
 
-
-UiStore.displayUndo&&_react2.default.createElement(_UndoButton2.default,{__source:{fileName:_jsxFileName,lineNumber:55}})))}}]);return Main})(_react.Component))||_class)||_class);
+UiStore.displayUndo&&_react2.default.createElement(_UndoButton2.default,{__source:{fileName:_jsxFileName,lineNumber:51}})))}}]);return Main})(_react.Component))||_class)||_class);
 
 
 

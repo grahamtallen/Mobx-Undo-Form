@@ -30,6 +30,6 @@ _react2.default.createElement(_reactNative.Text,{style:_Main.styles.textStyles,_
 
 
 
-(0,_native.inject)('stores')((0,_native.observer)(Controls));
+(0,_native.inject)('stores')(Controls);
 
 //# sourceMappingURL=Controls-compiled.js.map

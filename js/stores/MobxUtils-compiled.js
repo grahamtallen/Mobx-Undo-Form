@@ -8,7 +8,6 @@ var mappedStores={};
 _lodash2.default.forEach(subStores,function(store,key){
 mappedStores[store.constructor.name]=store});
 
-
 return mappedStores}; /**
  * Created by grahamallen on 1/30/17.
  */
