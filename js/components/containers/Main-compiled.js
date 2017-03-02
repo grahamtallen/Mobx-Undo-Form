@@ -7,7 +7,8 @@ var _native=require('mobx-react/native');
 var _nativeBase=require('native-base');
 var _FormPage=require('../FormPage');var _FormPage2=_interopRequireDefault(_FormPage);
 var _Controls=require('../Controls');var _Controls2=_interopRequireDefault(_Controls);
-var _UndoButton=require('../UndoButton');var _UndoButton2=_interopRequireDefault(_UndoButton);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj}}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function")}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called")}return call&&(typeof call==="object"||typeof call==="function")?call:self}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass)}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass}
+var _UndoButton=require('../UndoButton');var _UndoButton2=_interopRequireDefault(_UndoButton);
+var _SearchDropdown=require('../SearchDropdown');var _SearchDropdown2=_interopRequireDefault(_SearchDropdown);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj}}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function")}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called")}return call&&(typeof call==="object"||typeof call==="function")?call:self}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass)}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass}
 var styles=exports.styles={
 textStyles:{
 color:'white'}};var 
@@ -17,18 +18,17 @@ color:'white'}};var
 
 
 
-
-
 Main=(_dec=(0,_native.inject)("stores","globals"),_dec(_class=(0,_native.observer)(_class=(function(_Component){_inherits(Main,_Component);function Main(){_classCallCheck(this,Main);return _possibleConstructorReturn(this,(Main.__proto__||Object.getPrototypeOf(Main)).apply(this,arguments))}_createClass(Main,[{key:'componentDidMount',value:function componentDidMount()
 
 {
-this.props.globals.login()}},{key:'render',value:function render()
+this.props.stores.UserStore.getUsers()}},{key:'render',value:function render()
 
 
 {var _props$stores=
 
 this.props.stores,UiStore=_props$stores.UiStore,NumberStore=_props$stores.NumberStore,ColorStore=_props$stores.ColorStore,FormStore=_props$stores.FormStore;
 var globals=this.props.globals;
+
 var headerStyle={flex:1,flexDirection:'row',backgroundColor:ColorStore.currentColor};
 var headerText=FormStore.header?FormStore.header:"Create Form";
 
@@ -45,10 +45,11 @@ _react2.default.createElement(_reactNative.Text,{style:styles.textStyles,__sourc
 
 
 
-_react2.default.createElement(_FormPage2.default,{__source:{fileName:_jsxFileName,lineNumber:48}}),
-_react2.default.createElement(_Controls2.default,{__source:{fileName:_jsxFileName,lineNumber:49}})),
+_react2.default.createElement(_Controls2.default,{__source:{fileName:_jsxFileName,lineNumber:48}}),
+_react2.default.createElement(_FormPage2.default,{__source:{fileName:_jsxFileName,lineNumber:49}}),
+UiStore.showUserSearch&&_react2.default.createElement(_SearchDropdown2.default,{__source:{fileName:_jsxFileName,lineNumber:50}})),
 
-UiStore.displayUndo&&_react2.default.createElement(_UndoButton2.default,{__source:{fileName:_jsxFileName,lineNumber:51}})))}}]);return Main})(_react.Component))||_class)||_class);
+UiStore.displayUndo&&_react2.default.createElement(_UndoButton2.default,{__source:{fileName:_jsxFileName,lineNumber:52}})))}}]);return Main})(_react.Component))||_class)||_class);
 
 
 

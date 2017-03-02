@@ -8,6 +8,7 @@ import {Button, ListItem, Icon, Input, Container, Content, Header, List, Left, R
 import FormPage from '../FormPage';
 import Controls from '../Controls';
 import UndoButton from '../UndoButton'
+import SearchDropdown from '../SearchDropdown'
 export const styles = {
     textStyles: {
         color: 'white'
@@ -15,20 +16,19 @@ export const styles = {
 }
 
 
-@inject(
-    "stores",
-    "globals"
-) @observer
+@inject("stores", "globals")
+@observer
 class Main extends Component {
 
     componentDidMount(){
-        this.props.globals.login();
+        this.props.stores.UserStore.getUsers();
     }
 
     render() {
 
         let {UiStore, NumberStore, ColorStore, FormStore} = this.props.stores;
         let globals = this.props.globals;
+
         const headerStyle = {flex: 1, flexDirection: 'row', backgroundColor: ColorStore.currentColor};
         let headerText = FormStore.header ? FormStore.header : "Create Form";
 
@@ -45,8 +45,9 @@ class Main extends Component {
                             </Button>
                         </Right>
                     </Header>
-                    <FormPage />
                     <Controls />
+                    <FormPage />
+                    {UiStore.showUserSearch && <SearchDropdown />}
                 </Content>
               {UiStore.displayUndo && <UndoButton />}
             </Container>

@@ -21,6 +21,8 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+*-compiled.js
+*-compiled.js.map
 
 # Android/IntelliJ
 #

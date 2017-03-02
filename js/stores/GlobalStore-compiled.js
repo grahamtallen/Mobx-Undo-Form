@@ -41,6 +41,7 @@ var _substores=this.substores,UiStore=_substores.UiStore,UndoStore=_substores.Un
 
 
 
+
 {var _substores2=
 this.substores,UndoStore=_substores2.UndoStore,UiStore=_substores2.UiStore,ColorStore=_substores2.ColorStore;
 var lastSnapshot=UndoStore.snapshots.length>1&&UndoStore.snapshots[1];
@@ -83,7 +84,7 @@ return null}}},{key:'searchedUsers',get:function get()
 
 {var _substores5=
 this.substores,UiStore=_substores5.UiStore,UserStore=_substores5.UserStore;
-return UserStore.users.filter(function(user){return user.name.includes(UiStore.searchText)})}},{key:'snapshot',get:function get()
+return UserStore.users.filter(function(user){return user.name.toLowerCase().includes(UiStore.searchText.toLowerCase())})}},{key:'snapshot',get:function get()
 
 
 

@@ -29,6 +29,7 @@ class GlobalStore {
 
     pushSnapshotAndSave = async (snapshot) => {
         let {UndoStore, UiStore} = this.substores;
+
         if (snapshot && UiStore.autoSaveDrafts) {
             UndoStore.pushSnapshot(snapshot);
             UiStore.displayUndo = true;
@@ -83,7 +84,7 @@ class GlobalStore {
     @computed
     get searchedUsers() {
         var {UiStore, UserStore} = this.substores;
-        return UserStore.users.filter(user => user.name.includes(UiStore.searchText))
+        return UserStore.users.filter(user => user.name.toLowerCase().includes(UiStore.searchText.toLowerCase()))
     }
 
     @computed

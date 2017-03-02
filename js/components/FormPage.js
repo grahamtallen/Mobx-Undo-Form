@@ -9,9 +9,9 @@ import {styles} from './containers/Main'
 
 @inject('stores', 'globals') @observer
 export default class FormPage extends Component {
-    render() {
 
-        let {NumberStore, FormStore} = this.props.stores;
+    render() {
+        let {NumberStore, FormStore, UiStore, UserStore} = this.props.stores;
 
         return (
             <View  >
@@ -32,10 +32,10 @@ export default class FormPage extends Component {
                     />
                 </ListItem>
                 <ListItem>
-                    <Text>{'Shared Users: ' + NumberStore.currentNumber}</Text>
+                    <Text>Shared Users {UserStore.sharedUsers.length}</Text>
                     <Right>
-                        <Button bordered onPress={() => NumberStore.add()}>
-                            <Text >{'Add'}</Text>
+                        <Button bordered onPress={() => UiStore.showUserSearch = true}>
+                            <Text >{'Share'}</Text>
                         </Button>
                     </Right>
                 </ListItem>

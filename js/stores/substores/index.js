@@ -21,9 +21,10 @@ import _ from 'lodash';
 
 class UiStore {
     @observable loggedIn = false;
-    @observable searchText = "";
+    @observable searchText = "G";
     @observable displayUndo = false;
     @observable autoSaveDrafts = true;
+    @observable showUserSearch = false;
 }
 
 
@@ -62,6 +63,8 @@ class FormStore {
 class UserStore {
     @observable currentUser = {};
     @observable users = [];
+
+    @observable sharedUsers = [];
 
     @action
     getUsers = async () => {
